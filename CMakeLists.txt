@@ -71,6 +71,10 @@ INCLUDE_DIRECTORIES(SYSTEM ${IPOPT_INCLUDE_DIRS_PATCHED})
 #add this path to the .pc file
 PKG_CONFIG_APPEND_CFLAGS(-I${IPOPT_INCLUDE_DIRS_PATCHED})
 
+# Add ipopt plugin to pkg-config file.
+PKG_CONFIG_APPEND_LIBS_RAW(
+  "${ROBOPTIM_CORE_PLUGINDIR}/roboptim-core-plugin-ipopt.so")
+
 HEADER_INSTALL("${HEADERS}")
 
 ADD_SUBDIRECTORY(src)
