@@ -39,8 +39,8 @@ namespace roboptim
       app_ (IpoptApplicationFactory ()),
       uic_ (new UserIntermediateCallback)
   {
-    app_->Jnlst()->DeleteAllJournals();
-    
+    //app_->Jnlst()->DeleteAllJournals();
+
     // Initialize parameters.
     initializeParameters ();
   }
