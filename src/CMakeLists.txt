@@ -21,6 +21,8 @@ MACRO(IPOPT_PLUGIN NAME)
   ADD_LIBRARY(roboptim-core-plugin-${NAME} MODULE
     ${NAME}.cc tnlp.cc tnlp.hh tnlp.hxx doc.hh ${HEADERS}
     )
+  PKG_CONFIG_USE_DEPENDENCY(roboptim-core-plugin-${NAME} ipopt)
+  PKG_CONFIG_USE_DEPENDENCY(roboptim-core-plugin-${NAME} roboptim-core)
   SET_TARGET_PROPERTIES(roboptim-core-plugin-${NAME} PROPERTIES
     COMPILE_DEFINITIONS
       IPOPT_DEFAULT_LINEAR_SOLVER="${IPOPT_DEFAULT_LINEAR_SOLVER}"
@@ -29,8 +31,6 @@ MACRO(IPOPT_PLUGIN NAME)
     SOVERSION 3 VERSION 3.2.0)
   INSTALL(TARGETS roboptim-core-plugin-${NAME}
     DESTINATION ${PLUGINDIR})
-  PKG_CONFIG_USE_DEPENDENCY(roboptim-core-plugin-${NAME} ipopt)
-  PKG_CONFIG_USE_COMPILE_DEPENDENCY(roboptim-core-plugin-${NAME} roboptim-core)
 
   # Make sure all symbols are defined.
   # See:
